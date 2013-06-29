@@ -268,7 +268,7 @@ public class SqlImporter {
                     }
                 }
 
-                if (typeField != null) {
+                if (typeField != null && ! typeField.isEmpty()) {
                     map.put(typeField, typeName);
                 }
 
