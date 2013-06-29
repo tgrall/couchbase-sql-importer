@@ -40,7 +40,7 @@ Usage
 
 3. Run the following command
 
-		java -cp java -cp "./CouchbaseSqlImporter.jar:./mysql-connector-java-5.1.25-bin.jar" com.couchbase.util.SqlImporter import.properties
+		java -cp "./CouchbaseSqlImporter.jar:./mysql-connector-java-5.1.25-bin.jar" com.couchbase.util.SqlImporter import.properties
 		
 		
 
