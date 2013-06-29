@@ -224,10 +224,6 @@ public class SqlImporter {
         Gson gson = new Gson();
         try {
 
-            if (createTableViewEnable) {
-                this.createViewsForPrimaryKey(tableName);
-            }
-
             preparedStatement = this.getConnection().prepareStatement(selectSQL);
             ResultSet rs = preparedStatement.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -284,6 +280,10 @@ public class SqlImporter {
             }
             System.out.println("    " + numRow + " records moved to Couchbase.");
 
+            if (createTableViewEnable) {
+                this.createViewsForPrimaryKey(tableName);
+            }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -335,8 +335,6 @@ public class SqlImporter {
                        .append(emitStatement)
                        .append("  }\n")
                        .append("}\n");
-
-            System.out.println(mapFunction);
 
 
             System.out.println("\n\n Create Couchbase views for table "+ tableName);

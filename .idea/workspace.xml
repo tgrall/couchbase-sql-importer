@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" name="Default" comment="" />
+    <list default="true" id="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java" afterPath="$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    </list>
     <ignored path="couchbase-sql-importer.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/SqlImporter.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372519517898" ignored="false" />
     <file path="/pom.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372500368001" ignored="false" />
     <file path="/ImportMysqlWorldDB.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372483292286" ignored="false" />
-    <file path="/Dummy.txt" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521233334" ignored="false" />
+    <file path="/Dummy.txt" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372523503117" ignored="false" />
     <file path="$PROJECT_DIR$/../couchbase-how-to-versioning/src/main/resources/import.properties" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372488218066" ignored="false" />
     <file path="/import.properties" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372488457058" ignored="false" />
     <file path="$PROJECT_DIR$/../../../couchbase-twitter-injector/.idea/workspace.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521593594" ignored="false" />
@@ -28,7 +31,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -63,6 +65,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -73,29 +76,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file leaf-file-name="SqlImporter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="29" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sql-importer-lib/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="29" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample-import.properties" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/resources/sample-import.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="21" selection-start="93" selection-end="114" vertical-scroll-proportion="0.04385965">
-              <folding />
+            <state line="284" column="13" selection-start="10314" selection-end="10314" vertical-scroll-proportion="0.6442308">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,10 +116,10 @@
         <option value="$PROJECT_DIR$/sql-importer-lib/src/main/assembly/assembly.xml" />
         <option value="$PROJECT_DIR$/sql-importer-lib/pom.xml" />
         <option value="$PROJECT_DIR$/sql-importer-lib/README.MD" />
-        <option value="$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/sql-importer-lib/README.md" />
         <option value="$PROJECT_DIR$/sql-importer-lib/src/main/resources/sample-import.properties" />
+        <option value="$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java" />
       </list>
     </option>
   </component>
@@ -145,8 +132,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1920" />
-    <option name="height" value="1174" />
+    <option name="width" value="1440" />
+    <option name="height" value="874" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -176,6 +163,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -273,19 +262,47 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="couchbase-sql-importer.parent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="couchbase-sql-importer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sql-importer-lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -349,6 +366,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -375,19 +405,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -469,7 +486,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1174" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="874" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -488,7 +505,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.66888046" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.66888046" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986766" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -558,6 +575,27 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="29" selection-start="741" selection-end="741" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql-importer-lib/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="29" selection-start="741" selection-end="741" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/resources/sample-import.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="21" selection-start="93" selection-end="114" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="23" selection-start="1700" selection-end="1700" vertical-scroll-proportion="0.0">
@@ -584,33 +622,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
+    <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/resources/sample-import.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="77" selection-start="388" selection-end="388" vertical-scroll-proportion="0.2760736">
-          <folding>
-            <element signature="e#7667#7683#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="29" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+        <state line="3" column="21" selection-start="93" selection-end="114" vertical-scroll-proportion="0.061813187">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sql-importer-lib/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="29" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+        <state line="21" column="29" selection-start="717" selection-end="717" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/resources/sample-import.properties">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="21" selection-start="93" selection-end="114" vertical-scroll-proportion="0.04385965">
+        <state line="17" column="42" selection-start="627" selection-end="627" vertical-scroll-proportion="0.26573426">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="284" column="13" selection-start="10314" selection-end="10314" vertical-scroll-proportion="0.6442308">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
