@@ -11,6 +11,8 @@ The import
 	* Views for each type (table) to query on Primary Key (type/by_pk)
 	* All the views are using the _count reduce function.
 
+If you do not want to build it from source, you can download the JAR [here](https://www.dropbox.com/s/pcnwukw2j8xe2d2/CouchbaseSqlImporter.jar)
+
 
 Usage
 -----

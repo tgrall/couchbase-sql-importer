@@ -10,10 +10,10 @@
     <file path="/Dummy.txt" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521233334" ignored="false" />
     <file path="$PROJECT_DIR$/../couchbase-how-to-versioning/src/main/resources/import.properties" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372488218066" ignored="false" />
     <file path="/import.properties" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372488457058" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../couchbase-twitter-injector/.idea/workspace.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521327174" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../couchbase-twitter-injector/.idea/workspace.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521593594" ignored="false" />
     <file path="/README.md" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521252907" ignored="false" />
     <file path="/sample-import.properties" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521281884" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521327174" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521593594" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -442,6 +442,24 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" name="Default" comment="" />
