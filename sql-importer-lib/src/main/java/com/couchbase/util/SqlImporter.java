@@ -218,7 +218,9 @@ public class SqlImporter {
         } else if (typeFieldCase.equalsIgnoreCase("upper")) {
             typeName = tableName.toUpperCase();
         }
-
+        if (createTableViewEnable) {
+            this.createViewsForPrimaryKey(typeName);
+        }
         PreparedStatement preparedStatement = null;
         String selectSQL = "SELECT * FROM " + tableName;
         Gson gson = new Gson();
@@ -273,16 +275,12 @@ public class SqlImporter {
                 }
 
                 // use the rs number as key with table name
-                this.getCouchbaseClient().set(typeName + ":" + rs.getRow(), gson.toJson(map));
+                this.getCouchbaseClient().set(typeName + ":" + rs.getRow(), gson.toJson(map)).get();
 
 
                 numRow = rs.getRow();
             }
             System.out.println("    " + numRow + " records moved to Couchbase.");
-
-            if (createTableViewEnable) {
-                this.createViewsForPrimaryKey(tableName);
-            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -311,14 +309,24 @@ public class SqlImporter {
             StringBuilder emitStatement = new StringBuilder();
 
 
-            mapFunction.append("function (doc, meta) {\n");
+            mapFunction.append("function (doc, meta) {\n")
+                       .append("  var idx = (meta.id).indexOf(\":\");\n")
+                       .append("  var docType = (meta.id).substring(0,idx); \n");
+
 
             if (array != null && array.length == 1) {
-                ifStatement.append("  if (meta.type == 'json' && doc.").append( array[0] ).append(" ){ \n");
+                ifStatement.append("  if (meta.type == 'json' && docType == '")
+                           .append(tableName)
+                           .append("'  && doc.")
+                           .append(array[0])
+                           .append(" ){ \n");
                 emitStatement.append("    emit(doc.").append(array[0]).append(");");
             } else if (array != null && array.length > 1) {
                 emitStatement.append("    emit([");
-                ifStatement.append("  if  (meta.type == 'json' && ");
+                ifStatement.append("  if (meta.type == 'json' && docType == '")
+                           .append(tableName)
+                           .append("'  && ");
+
                 for (int i = 0; i < array.length; i++) {
                     emitStatement.append("doc.").append(array[i]);
                     ifStatement.append("doc.").append(array[i]);

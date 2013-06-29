@@ -17,7 +17,7 @@ If you do not want to build it from source, you can download the JAR [here](http
 Usage
 -----
 
-1. Configure an import.properties file with all the parameters 
+1. Configure an import.properties file with all the parameters
 
 		## SQL Information ##
 		sql.connection=jdbc:mysql://192.168.99.19:3306/world
@@ -41,6 +41,25 @@ Usage
 3. Run the following command
 
 		java -cp "./CouchbaseSqlImporter.jar:./mysql-connector-java-5.1.25-bin.jar" com.couchbase.util.SqlImporter import.properties
-		
-		
+
+
+
+Notes
+-----
+This tool is a small utility that I have developed in few hours as a demonstrator.
+
+I have tested the tool mainly on MySQL with some sample schemas: World (few hundreds of records), Employees (4 millions records);
+but I have not tried to optimize the import "speed" (for example multithreading, divide select is chunks, ...).
+
+I addition to the tests that I need to do with multiple databases types, I also need to create a test suite.
+
+**To do**
+
+
+* Implement a test suite
+* Provide "Report/Logging"
+* Create Document keys using PK columns
+	* Error/Log for long keys (>250char)	 
+* Test multiple databases, at least Oracle 
+
 
