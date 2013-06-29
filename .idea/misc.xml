@@ -41,10 +41,7 @@
     <breakpoint_rules />
     <ui_properties />
   </component>
-  <component name="EntryPointsManager">
-    <entry_points version="2.0" />
-  </component>
-  <component name="IdProvider" IDEtalkID="904E0DEFAB9A0D481B8360692496827B" />
+  <component name="IdProvider" IDEtalkID="0F5FC6CEB12483E9D8774BADEB56C67C" />
   <component name="IvyIDEA.ProjectSettings">
     <option name="artifactTypeSettings">
       <ArtifactTypeSettings />

@@ -3,10 +3,6 @@
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
     <excludeFromCompile>
-      <directory url="file://$PROJECT_DIR$/sql-importer-util/target/generated-sources/annotations" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/sql-importer-util/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/sql-importer-tester/target/generated-sources/annotations" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/sql-importer-tester/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/sql-importer-lib/target/generated-sources/annotations" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/sql-importer-lib/target/generated-test-sources/test-annotations" includeSubdirectories="true" />
     </excludeFromCompile>
@@ -30,15 +26,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="couchbase-sql-importer (1)" />
-        <module name="couchbase-sql-importer (2)" />
+        <module name="couchbase-sql-importer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="couchbase-sql-importer (1)" target="1.6" />
-      <module name="couchbase-sql-importer (2)" target="1.6" />
-      <module name="couchbase-sql-importer.parent" target="1.6" />
-    </bytecodeTargetLevel>
   </component>
 </project>
 

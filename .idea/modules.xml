@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/sql-importer-tester/couchbase-sql-importer (1).iml" filepath="$PROJECT_DIR$/sql-importer-tester/couchbase-sql-importer (1).iml" />
-      <module fileurl="file://$PROJECT_DIR$/sql-importer-lib/couchbase-sql-importer (2).iml" filepath="$PROJECT_DIR$/sql-importer-lib/couchbase-sql-importer (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/sql-importer-lib/couchbase-sql-importer.iml" filepath="$PROJECT_DIR$/sql-importer-lib/couchbase-sql-importer.iml" />
       <module fileurl="file://$PROJECT_DIR$/couchbase-sql-importer.parent.iml" filepath="$PROJECT_DIR$/couchbase-sql-importer.parent.iml" />
     </modules>
   </component>
