@@ -211,15 +211,9 @@ public class SqlImporter {
 
     public void importTable(String tableName) throws Exception {
         System.out.println("\n  Exporting Table : " + tableName);
-
-        String typeName = tableName;
-        if (typeFieldCase.equalsIgnoreCase("lower")) {
-            typeName = tableName.toLowerCase();
-        } else if (typeFieldCase.equalsIgnoreCase("upper")) {
-            typeName = tableName.toUpperCase();
-        }
+        String typeName = this.getTableNameAsConfigured(tableName, typeFieldCase);
         if (createTableViewEnable) {
-            this.createViewsForPrimaryKey(typeName);
+            this.createViewsForPrimaryKey(tableName);
         }
         PreparedStatement preparedStatement = null;
         String selectSQL = "SELECT * FROM " + tableName;
@@ -293,7 +287,7 @@ public class SqlImporter {
     }
 
     private void createViewsForPrimaryKey(String tableName) {
-
+        String typeName = getTableNameAsConfigured(tableName, typeFieldCase);
         List<String> pkCols = new ArrayList();
         DatabaseMetaData databaseMetaData = null;
         try {
@@ -316,7 +310,7 @@ public class SqlImporter {
 
             if (array != null && array.length == 1) {
                 ifStatement.append("  if (meta.type == 'json' && docType == '")
-                           .append(tableName)
+                           .append(typeName)
                            .append("'  && doc.")
                            .append(array[0])
                            .append(" ){ \n");
@@ -324,7 +318,7 @@ public class SqlImporter {
             } else if (array != null && array.length > 1) {
                 emitStatement.append("    emit([");
                 ifStatement.append("  if (meta.type == 'json' && docType == '")
-                           .append(tableName)
+                           .append(typeName)
                            .append("'  && ");
 
                 for (int i = 0; i < array.length; i++) {
@@ -345,7 +339,7 @@ public class SqlImporter {
                        .append("}\n");
 
 
-            System.out.println("\n\n Create Couchbase views for table "+ tableName);
+            System.out.println("\n\n Create Couchbase views for table "+ typeName);
             DesignDocument designDoc = new DesignDocument(tableName);
             String viewName = "by_pk";
             String reduceFunction = "_count";
@@ -409,4 +403,13 @@ public class SqlImporter {
         this.connection = connection;
     }
 
+    private String getTableNameAsConfigured(String tablename, String nameType) {
+        String returnValue =  tablename;
+        if (nameType.equalsIgnoreCase("lower")) {
+            returnValue = tablename.toLowerCase();
+        } else if (nameType.equalsIgnoreCase("upper")) {
+            returnValue = tablename.toUpperCase();
+        }
+        return returnValue;
+    }
 }

@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sql-importer-lib/README.MD" afterPath="$PROJECT_DIR$/sql-importer-lib/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java" afterPath="$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="couchbase-sql-importer.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/SqlImporter.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372537910486" ignored="false" />
+    <file path="/SqlImporter.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372610724002" ignored="false" />
     <file path="/pom.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372500368001" ignored="false" />
     <file path="/ImportMysqlWorldDB.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372483292286" ignored="false" />
     <file path="/Dummy.txt" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372529228362" ignored="false" />
@@ -80,7 +77,7 @@
       <file leaf-file-name="SqlImporter.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="224" column="56" selection-start="7240" selection-end="7240" vertical-scroll-proportion="0.055476528">
+            <state line="341" column="81" selection-start="12773" selection-end="12773" vertical-scroll-proportion="0.7651099">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -677,7 +674,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="56" selection-start="7240" selection-end="7240" vertical-scroll-proportion="0.055476528">
+        <state line="341" column="81" selection-start="12773" selection-end="12773" vertical-scroll-proportion="0.7651099">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
