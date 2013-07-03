@@ -3,18 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java" afterPath="$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="couchbase-sql-importer.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/SqlImporter.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372610724002" ignored="false" />
+    <file path="/SqlImporter.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372845679763" ignored="false" />
     <file path="/pom.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372500368001" ignored="false" />
     <file path="/ImportMysqlWorldDB.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372483292286" ignored="false" />
-    <file path="/Dummy.txt" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372529228362" ignored="false" />
+    <file path="/Dummy.txt" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372845223103" ignored="false" />
     <file path="$PROJECT_DIR$/../couchbase-how-to-versioning/src/main/resources/import.properties" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372488218066" ignored="false" />
     <file path="/import.properties" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372488457058" ignored="false" />
     <file path="$PROJECT_DIR$/../../../couchbase-twitter-injector/.idea/workspace.xml" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521593594" ignored="false" />
     <file path="/README.md" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372532777515" ignored="false" />
     <file path="/sample-import.properties" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372521281884" ignored="false" />
+    <file path="$USER_HOME$/Downloads/mongo/mongodb/src/main/java/com/mkyong/core/App.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372791151520" ignored="false" />
+    <file path="/App.java" changelist="b8d8e8d6-b0e8-4b05-83ad-a0edaa85cf0e" time="1372791149305" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +32,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -63,7 +67,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -77,7 +80,7 @@
       <file leaf-file-name="SqlImporter.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="341" column="81" selection-start="12773" selection-end="12773" vertical-scroll-proportion="0.7651099">
+            <state line="325" column="102" selection-start="12365" selection-end="12365" vertical-scroll-proportion="0.48347107">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -180,7 +183,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -311,16 +313,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
@@ -383,19 +386,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -422,6 +412,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -594,6 +597,29 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="341" column="81" selection-start="12773" selection-end="12773" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql-importer-lib/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="0" selection-start="1888" selection-end="1888" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="32" selection-start="944" selection-end="944" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="270" column="43" selection-start="9843" selection-end="9843" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
@@ -674,7 +700,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sql-importer-lib/src/main/java/com/couchbase/util/SqlImporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="341" column="81" selection-start="12773" selection-end="12773" vertical-scroll-proportion="0.7651099">
+        <state line="325" column="102" selection-start="12365" selection-end="12365" vertical-scroll-proportion="0.48347107">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

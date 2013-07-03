@@ -211,7 +211,7 @@ public class SqlImporter {
 
     public void importTable(String tableName) throws Exception {
         System.out.println("\n  Exporting Table : " + tableName);
-        String typeName = this.getTableNameAsConfigured(tableName, typeFieldCase);
+        String typeName = this.getNamewithCase(tableName, typeFieldCase);
         if (createTableViewEnable) {
             this.createViewsForPrimaryKey(tableName);
         }
@@ -231,7 +231,7 @@ public class SqlImporter {
 
 
                 for (int i = 1; i < numColumns + 1; i++) {
-                    String columnName = rsmd.getColumnName(i);
+                    String columnName = this.getNamewithCase(rsmd.getColumnName(i), typeFieldCase);
 
                     if (rsmd.getColumnType(i) == java.sql.Types.ARRAY) {
                         map.put(columnName, rs.getArray(columnName));
@@ -287,7 +287,7 @@ public class SqlImporter {
     }
 
     private void createViewsForPrimaryKey(String tableName) {
-        String typeName = getTableNameAsConfigured(tableName, typeFieldCase);
+        String typeName = this.getNamewithCase(tableName, typeFieldCase);
         List<String> pkCols = new ArrayList();
         DatabaseMetaData databaseMetaData = null;
         try {
@@ -312,7 +312,7 @@ public class SqlImporter {
                 ifStatement.append("  if (meta.type == 'json' && docType == '")
                            .append(typeName)
                            .append("'  && doc.")
-                           .append(array[0])
+                           .append( this.getNamewithCase( array[0], typeFieldCase) )
                            .append(" ){ \n");
                 emitStatement.append("    emit(doc.").append(array[0]).append(");");
             } else if (array != null && array.length > 1) {
@@ -322,8 +322,8 @@ public class SqlImporter {
                            .append("'  && ");
 
                 for (int i = 0; i < array.length; i++) {
-                    emitStatement.append("doc.").append(array[i]);
-                    ifStatement.append("doc.").append(array[i]);
+                    emitStatement.append("doc.").append( this.getNamewithCase( array[i], typeFieldCase) );
+                    ifStatement.append("doc.").append( this.getNamewithCase( array[i], typeFieldCase) );
                     if (i < (array.length-1)) {
                       emitStatement.append(", ");
                       ifStatement.append(" && ");
@@ -403,7 +403,7 @@ public class SqlImporter {
         this.connection = connection;
     }
 
-    private String getTableNameAsConfigured(String tablename, String nameType) {
+    private String getNamewithCase(String tablename, String nameType) {
         String returnValue =  tablename;
         if (nameType.equalsIgnoreCase("lower")) {
             returnValue = tablename.toLowerCase();
