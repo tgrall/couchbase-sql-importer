@@ -20,7 +20,7 @@ Usage
 1. Configure an import.properties file with all the parameters
 
 		## SQL Information ##
-		sql.connection=jdbc:mysql://192.168.99.19:3306/world
+		sql.connection=jdbc:mysql://192.168.99.19:3306/world?zeroDateTimeBehavior=convertToNull
 		sql.username=root
 		sql.password=password
 
