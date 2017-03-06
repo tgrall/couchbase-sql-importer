@@ -4,6 +4,7 @@ import com.couchbase.client.CouchbaseClient;
 import com.couchbase.client.protocol.views.DesignDocument;
 import com.couchbase.client.protocol.views.ViewDesign;
 import com.google.gson.Gson;
+import net.spy.memcached.internal.CheckedOperationTimeoutException;
 
 import java.io.FileInputStream;
 import java.net.URI;
@@ -215,75 +216,90 @@ public class SqlImporter {
         if (createTableViewEnable) {
             this.createViewsForPrimaryKey(tableName);
         }
-        PreparedStatement preparedStatement = null;
-        String selectSQL = "SELECT * FROM " + tableName;
-        Gson gson = new Gson();
-        try {
+        int rowsCopied = 75500;
+        boolean retry = false;
+        long startTime = System.currentTimeMillis();
+        do {
+            retry = false;
+            PreparedStatement preparedStatement = null;
+            String selectSQL = "SELECT * FROM " + tableName;
+            if (rowsCopied > 0) {
+                selectSQL += " LIMIT " + rowsCopied + ",18446744073709551615;";
+            }
+            Gson gson = new Gson();
+            try {
+                preparedStatement = this.getConnection().prepareStatement(selectSQL);
+                ResultSet rs = preparedStatement.executeQuery();
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int numColumns = rsmd.getColumnCount();
+                while (rs.next()) {
+                    Map<String, Object> map = new HashMap<String, Object>();
 
-            preparedStatement = this.getConnection().prepareStatement(selectSQL);
-            ResultSet rs = preparedStatement.executeQuery();
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int numColumns = rsmd.getColumnCount();
 
-            int numRow = 0;
-            while (rs.next()) {
-                Map<String, Object> map = new HashMap<String, Object>();
+                    for (int i = 1; i < numColumns + 1; i++) {
+                        String columnName = this.getNamewithCase(rsmd.getColumnName(i), typeFieldCase);
 
-
-                for (int i = 1; i < numColumns + 1; i++) {
-                    String columnName = this.getNamewithCase(rsmd.getColumnName(i), typeFieldCase);
-
-                    if (rsmd.getColumnType(i) == java.sql.Types.ARRAY) {
-                        map.put(columnName, rs.getArray(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.BIGINT) {
-                        map.put(columnName, rs.getInt(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.BOOLEAN) {
-                        map.put(columnName, rs.getBoolean(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.BLOB) {
-                        map.put(columnName, rs.getBlob(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.DOUBLE) {
-                        map.put(columnName, rs.getDouble(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.FLOAT) {
-                        map.put(columnName, rs.getFloat(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.INTEGER) {
-                        map.put(columnName, rs.getInt(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.NVARCHAR) {
-                        map.put(columnName, rs.getNString(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.VARCHAR) {
-                        map.put(columnName, rs.getString(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.TINYINT) {
-                        map.put(columnName, rs.getInt(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.SMALLINT) {
-                        map.put(columnName, rs.getInt(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.DATE) {
-                        map.put(columnName, rs.getDate(columnName));
-                    } else if (rsmd.getColumnType(i) == java.sql.Types.TIMESTAMP) {
-                        map.put(columnName, rs.getTimestamp(columnName));
-                    } else {
-                        map.put(columnName, rs.getObject(columnName));
+                        if (rsmd.getColumnType(i) == java.sql.Types.ARRAY) {
+                            map.put(columnName, rs.getArray(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.BIGINT) {
+                            map.put(columnName, rs.getInt(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.BOOLEAN) {
+                            map.put(columnName, rs.getBoolean(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.BLOB) {
+                            map.put(columnName, rs.getBlob(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.DOUBLE) {
+                            map.put(columnName, rs.getDouble(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.FLOAT) {
+                            map.put(columnName, rs.getFloat(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.INTEGER) {
+                            map.put(columnName, rs.getInt(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.NVARCHAR) {
+                            map.put(columnName, rs.getNString(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.VARCHAR) {
+                            map.put(columnName, rs.getString(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.TINYINT) {
+                            map.put(columnName, rs.getInt(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.SMALLINT) {
+                            map.put(columnName, rs.getInt(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.DATE) {
+                            map.put(columnName, rs.getDate(columnName));
+                        } else if (rsmd.getColumnType(i) == java.sql.Types.TIMESTAMP) {
+                            map.put(columnName, rs.getTimestamp(columnName));
+                        } else {
+                            map.put(columnName, rs.getObject(columnName));
+                        }
                     }
+
+                    if (typeField != null && !typeField.isEmpty()) {
+                        map.put(typeField, typeName);
+                    }
+
+                    // use the rs number as key with table name
+                    this.getCouchbaseClient().set(typeName + ":" + rowsCopied, gson.toJson(map)).get();
+
+                    rowsCopied++;
                 }
-
-                if (typeField != null && ! typeField.isEmpty()) {
-                    map.put(typeField, typeName);
+            } catch (RuntimeException e) {
+                if (e.getCause() instanceof CheckedOperationTimeoutException) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Sleeping a while and re-trying...");
+                    Thread.sleep(5000);
+                    retry = true;
                 }
-
-                // use the rs number as key with table name
-                this.getCouchbaseClient().set(typeName + ":" + rs.getRow(), gson.toJson(map)).get();
-
-
-                numRow = rs.getRow();
+            } catch (SQLException e) {
+                // got '2.147483648E9' in column '9' is outside valid range for the datatype INTEGER.
+                System.out.println(e.getMessage());
+                System.out.println("Continuing from the next line #" + rowsCopied);
+                rowsCopied++;
+                retry = true;
+            } finally {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
             }
-            System.out.println("    " + numRow + " records moved to Couchbase.");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            if (preparedStatement != null) {
-                preparedStatement.close();
-            }
-        }
-
+        } while (retry);
+        long timing = System.currentTimeMillis() - startTime;
+        System.out.println("    Moving " + rowsCopied + " records to Couchbase took " + timing + " ms");
     }
 
     private void createViewsForPrimaryKey(String tableName) {
