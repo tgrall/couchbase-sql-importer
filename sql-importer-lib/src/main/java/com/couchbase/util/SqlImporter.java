@@ -8,7 +8,12 @@ import com.google.gson.Gson;
 import java.io.FileInputStream;
 import java.net.URI;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
@@ -31,6 +36,15 @@ public class SqlImporter {
     private static final String TYPE_FIELD = "import.typefield";
     private static final String TYPE_CASE = "import.fieldcase";
 
+    private static final String ID_FIELD = "generate.idField";
+    private static final String DATE_FIELD = "generate.dateField";
+    private static final String YEAR_FIELD = "generate.yearField";
+    private static final String MONTH_FIELD = "generate.monthField";
+    private static final String DAY_FIELD = "generate.dayField";
+    private static final String HOUR_FIELD = "generate.hourField";
+    private static final String REPEAT_COUNT_FIELD = "generate.repeatCount";
+    private static final String REPEAT_STEP_FIELD = "generate.repeatStepMillis";
+
     private CouchbaseClient couchbaseClient = null;
     private Connection connection = null;
 
@@ -50,6 +64,15 @@ public class SqlImporter {
     private String typeFieldCase = null;
     private boolean createTableViewEnable = true;
     private String[] tableList = null;
+
+    private String idField = null;
+    private String dateField = null;
+    private String yearField = null;
+    private String monthField = null;
+    private String dayField = null;
+    private String hourField = null;
+    private int repeatCount = -1;
+    private long repeatStepMillis = -1;
 
 
     public static void main(String[] args) {
@@ -156,6 +179,37 @@ public class SqlImporter {
                 typeFieldCase = prop.getProperty(TYPE_CASE);
             }
 
+            if (prop.containsKey(ID_FIELD)) {
+                idField = prop.getProperty(ID_FIELD);
+            }
+
+            if (prop.containsKey(DATE_FIELD)) {
+                dateField = prop.getProperty(DATE_FIELD);
+            }
+
+            if (prop.containsKey(YEAR_FIELD)) {
+                yearField = prop.getProperty(YEAR_FIELD);
+            }
+
+            if (prop.containsKey(DAY_FIELD)) {
+                dayField = prop.getProperty(DAY_FIELD);
+            }
+
+            if (prop.containsKey(MONTH_FIELD)) {
+                monthField = prop.getProperty(MONTH_FIELD);
+            }
+
+            if (prop.containsKey(HOUR_FIELD)) {
+                hourField = prop.getProperty(HOUR_FIELD);
+            }
+
+            if (prop.containsKey(REPEAT_COUNT_FIELD)) {
+                repeatCount = Integer.parseInt(prop.getProperty(REPEAT_COUNT_FIELD));
+            }
+
+            if (prop.containsKey(REPEAT_STEP_FIELD)) {
+                repeatStepMillis = Long.parseLong(prop.getProperty(REPEAT_STEP_FIELD));
+            }
 
             System.out.println("\nImporting table(s)");
             System.out.println("\tfrom : \t" + sqlConnString);
@@ -225,10 +279,11 @@ public class SqlImporter {
             ResultSetMetaData rsmd = rs.getMetaData();
             int numColumns = rsmd.getColumnCount();
 
-            int numRow = 0;
+            int rowCount = 0;
+            int rowsMoved = 0;
             while (rs.next()) {
+                rowCount++;
                 Map<String, Object> map = new HashMap<String, Object>();
-
 
                 for (int i = 1; i < numColumns + 1; i++) {
                     String columnName = this.getNamewithCase(rsmd.getColumnName(i), typeFieldCase);
@@ -236,7 +291,7 @@ public class SqlImporter {
                     if (rsmd.getColumnType(i) == java.sql.Types.ARRAY) {
                         map.put(columnName, rs.getArray(columnName));
                     } else if (rsmd.getColumnType(i) == java.sql.Types.BIGINT) {
-                        map.put(columnName, rs.getInt(columnName));
+                        map.put(columnName, rs.getLong(columnName));
                     } else if (rsmd.getColumnType(i) == java.sql.Types.BOOLEAN) {
                         map.put(columnName, rs.getBoolean(columnName));
                     } else if (rsmd.getColumnType(i) == java.sql.Types.BLOB) {
@@ -264,17 +319,55 @@ public class SqlImporter {
                     }
                 }
 
-                if (typeField != null && ! typeField.isEmpty()) {
+                if (typeField != null && typeField.length() > 0) {
                     map.put(typeField, typeName);
                 }
 
-                // use the rs number as key with table name
-                this.getCouchbaseClient().set(typeName + ":" + rs.getRow(), gson.toJson(map)).get();
+                String originalId = (idField != null && idField.length() > 0) ?
+                        map.get(idField).toString() :
+                        tableName + ":" + Integer.toString(rowCount);
+                if (dateField != null && dateField.length() > 0) {
+                    String dateString = map.get(dateField).toString();
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM d, yyyy hh:mm:ss a");    // "Jan 14, 2016 10:06:35 PM"
+                    SimpleDateFormat backupFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.0");    // "2016-03-15 19:04:29.0"
+                    Date startDate = dateFormatter.parse(dateString, new ParsePosition(0));
+                    if (startDate == null) {
+                        startDate = backupFormatter.parse(dateString, new ParsePosition(0));
+                    }
+                    if (startDate == null) {
+                        System.out.println("Skipped " + dateString);
+                        continue;
+                    }
 
+                    System.out.println("Writing " + originalId + " x" + Integer.toString(repeatCount));
+                    long t = startDate.getTime();
+                    for (int i = 0; i < repeatCount; i++) {
+                        t += repeatStepMillis;
+                        Date d = new Date(t);
+                        map.put(dateField, dateFormatter.format(d));
+                        if (yearField != null && yearField.length() > 0) {
+                            map.put(yearField, calendar.get(Calendar.YEAR));
+                        }
+                        if (monthField != null && monthField.length() > 0) {
+                            map.put(monthField, calendar.get(Calendar.MONTH));
+                        }
+                        if (dayField != null && dayField.length() > 0) {
+                            map.put(dayField, calendar.get(Calendar.DAY_OF_MONTH));
+                        }
+                        if (hourField != null && hourField.length() > 0) {
+                            map.put(hourField, calendar.get(Calendar.HOUR_OF_DAY));
+                        }
+                        String key = originalId + "_" + Integer.toString(i);
+                        this.getCouchbaseClient().set(key, gson.toJson(map)).get();
+                    }
+                } else {
+                    this.getCouchbaseClient().set(originalId, gson.toJson(map)).get();
+                }
 
-                numRow = rs.getRow();
+                rowsMoved++;
             }
-            System.out.println("    " + numRow + " records moved to Couchbase.");
+            System.out.println("    " + rowsMoved + " out of " + rowCount + " records moved to Couchbase.");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
