@@ -236,7 +236,7 @@ public class SqlImporter {
                     if (rsmd.getColumnType(i) == java.sql.Types.ARRAY) {
                         map.put(columnName, rs.getArray(columnName));
                     } else if (rsmd.getColumnType(i) == java.sql.Types.BIGINT) {
-                        map.put(columnName, rs.getInt(columnName));
+                        map.put(columnName, rs.getLong(columnName));
                     } else if (rsmd.getColumnType(i) == java.sql.Types.BOOLEAN) {
                         map.put(columnName, rs.getBoolean(columnName));
                     } else if (rsmd.getColumnType(i) == java.sql.Types.BLOB) {
